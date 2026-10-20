@@ -32,15 +32,12 @@ def health_check():
     return {"status": "healthy"}
 
 
-from typing import Annotated
-
 @app.post("/analyze")
 async def analyze_documents(
-    files: list[UploadFile] = File(
-        ...,
-        media_type="application/pdf",
-        description="Select two or more PDF files",
-    ),
+    files: Annotated[
+        list[UploadFile],
+        File(description="Select two or more PDF files"),
+    ],
 ):
     """Extract claims and analyze relationships across uploaded PDFs."""
 
