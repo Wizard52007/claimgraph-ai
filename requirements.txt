@@ -1,0 +1,12 @@
+pymupdf
+pydantic
+python-dotenv
+pytest
+streamlit
+networkx
+pyvis
+sentence-transformers
+google-genai
+fastapi
+uvicorn[standard]
+python-multipart
