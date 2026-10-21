@@ -45,6 +45,11 @@ def generate_text(prompt: str) -> str:
             return response.text.strip()
 
         except errors.APIError as exc:
+
+            logger.warning(
+                "Application caught Gemini API error: HTTP %s",
+                exc.code,
+            )
             # Retry temporary server errors and rate limits.
             if exc.code not in (429, 500, 502, 503, 504):
                 raise
