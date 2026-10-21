@@ -10,3 +10,5 @@ google-genai
 fastapi
 uvicorn[standard]
 python-multipart
+openai
+groq
