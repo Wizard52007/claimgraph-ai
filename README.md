@@ -31,9 +31,13 @@ Instead of treating research papers as isolated blocks of text, ClaimGraph trans
 
 > **Our goal:** Make research easier to compare, evidence easier to trace, and relationships between scientific claims easier to understand.
 
----
-![Uploading image.png…]()
-![Uploading image.png…]()
+## 📸 Screenshots
+
+### Homepage
+![ClaimGraph AI Homepage](assets/homepage.png)
+
+### Analysis Results
+![Claim Analysis Results](assets/analysis-results.png)
 
 
 ## Overview
