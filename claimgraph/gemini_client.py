@@ -130,7 +130,8 @@ def _is_retryable_provider_error(exc):
 
 
 def generate_text(prompt: str) -> str:
-    """Generate text using ordered models and automatic provider fallback."""
+    """Generate text using ordered models and provider fallback."""
+
     providers = get_configured_providers()
 
     if not providers:
@@ -140,8 +141,13 @@ def generate_text(prompt: str) -> str:
         )
 
     failures = []
+    skipped_providers = set()
 
     for provider, model in providers:
+        # Avoid repeatedly hitting a provider after a rate-limit response.
+        if provider in skipped_providers:
+            continue
+
         try:
             logger.info(
                 "Trying AI provider %s with model %s",
@@ -163,9 +169,9 @@ def generate_text(prompt: str) -> str:
             status = _get_http_status(exc)
             retryable = _is_retryable_provider_error(exc)
 
-            # Log only non-sensitive metadata, not the raw exception.
             logger.warning(
-                "Provider %s model %s failed: error_type=%s status=%s retryable=%s",
+                "Provider %s model %s failed: error_type=%s "
+                "status=%s retryable=%s",
                 provider,
                 model,
                 type(exc).__name__,
@@ -174,29 +180,28 @@ def generate_text(prompt: str) -> str:
             )
 
             if status is not None:
-                failures.append(
-                    f"{provider}/{model}: HTTP {status}"
-                )
+                failures.append(f"{provider}/{model}: HTTP {status}")
             else:
                 failures.append(
                     f"{provider}/{model}: {type(exc).__name__}"
                 )
 
             if not retryable:
-                # Configuration and programming errors should not be hidden.
                 raise RuntimeError(
                     f"AI provider {provider} failed with "
                     f"{type(exc).__name__}."
                 ) from exc
 
-            # Move to the next configured model/provider after a
-            # retryable outage, timeout, or rate-limit response.
+            # Skip remaining models from this provider after rate limiting.
+            if status == 429:
+                skipped_providers.add(provider)
 
     details = "; ".join(failures)
 
-    logger.error("All configured AI models failed: %s", details)
+    logger.error("All available AI models failed: %s", details)
 
     raise RuntimeError(
-        "All configured AI models failed. "
+        "All available AI models failed. "
+        "You may have reached a provider's rate limit or quota. "
         f"Failures: {details}"
     )
