@@ -5,7 +5,7 @@ from claimgraph.relationship_analyzer import analyze_relationship
 
 
 # Maximum number of AI comparisons per analysis
-MAX_COMPARISONS = 20
+MAX_COMPARISONS = 3
 
 
 def compare_claims(
