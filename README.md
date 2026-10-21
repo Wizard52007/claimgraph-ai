@@ -4,7 +4,7 @@
 
 **Turn isolated research papers into traceable, connected claims.**
 
-🌐 **Live Demo:** [Try ClaimGraph AI]([YOUR_STREAMLIT_APP_URL](https://claimgraph-frontend-3bezcappddnyvpeag9pj384.streamlit.app/))
+🌐 **Live Demo:** [Try ClaimGraph AI](https://claimgraph-frontend-3bezcappddnyvpeag9pj384.streamlit.app/)
 
 ⚙️ **Backend API:** [ClaimGraph API](https://claimgraph-ai.onrender.com)
 
