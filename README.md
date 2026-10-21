@@ -1,3 +1,24 @@
+# ClaimGraph AI
+
+### Evidence-Based Research. Connected Claims. Transparent Analysis.
+
+**Turn isolated research papers into traceable, connected claims.**
+
+🌐 **Live Demo:** [Try ClaimGraph AI]([YOUR_STREAMLIT_APP_URL](https://claimgraph-frontend-3bezcappddnyvpeag9pj384.streamlit.app/))
+
+⚙️ **Backend API:** [ClaimGraph API](https://claimgraph-ai.onrender.com)
+
+📖 **API Documentation:** [Explore the API]([https://claimgraph-ai.onrender.com/docs](https://claimgraph-ai.onrender.com/docs?utm_source=chatgpt.com))
+
+💻 **Backend Repository:** [claimgraph-ai]([https://github.com/Wizard52007/claimgraph-ai](https://github.com/Wizard52007/claimgraph-ai?utm_source=chatgpt.com))
+
+💻 **Frontend Repository:** [claimgraph-frontend](https://github.com/Wizard52007/claimgraph-frontend)
+
+---
+
+**ClaimGraph AI** is an AI-powered research analysis tool that extracts factual claims from research papers, verifies them against their original source text, and identifies relationships between claims across documents.
+
+
 # claimgraph-ai
 Evidence-based claim analysis and contradiction detection across documents
 # ClaimGraph AI
@@ -151,7 +172,7 @@ cd claimgraph-ai
 Clone the frontend repository separately into a directory alongside the backend. Replace the placeholder below with your actual frontend repository URL.
 
 ```bash
-git clone <YOUR_FRONTEND_REPOSITORY_URL> claimgraph-frontend
+git clone https://github.com/Wizard52007/claimgraph-frontend.git
 ```
 
 ### 2. Set up the backend
